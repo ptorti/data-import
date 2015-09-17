@@ -193,7 +193,7 @@ class DbalReader implements CountableReaderInterface
 
     private function doCalcRowCount()
     {
-        $statement = $this->prepare('SELECT COUNT(*) FROM ('.$this->sql.')', $this->params);
+        $statement = $this->prepare('SELECT COUNT(*) FROM ('.$this->sql.') AS qry', $this->params);
         $statement->execute();
 
         $this->rowCount = (int) $statement->fetchColumn(0);
